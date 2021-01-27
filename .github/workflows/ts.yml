@@ -35,7 +35,7 @@ jobs:
       - name: '运行 【自动推送到GitHub😊】'
         run: |
           cd ~/scripts
-          npm run xx
+          npm cache clean --force&&rm -rf node_modules&&rm -rf package-lock.json&&npm install&&npm run xx
         env:
           PAT: ${{ secrets.PAT }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
