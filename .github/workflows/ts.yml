@@ -1,0 +1,42 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: ts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 */6 * * *'
+  watch:
+    types: [started]
+  repository_dispatch:
+    types: sx
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Checkout
+        run: |
+          git clone -b  master https://github.com/SallyU/tssvown.git ~/scripts
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: npm install
+        run: |
+          cd ~/scripts
+          npm install
+      - name: '运行 【自由更新💪】'
+        run: |
+          cd ~/scripts
+          node jd_sx.js
+      - name: '运行 【自动推送到GitHub😊】'
+        run: |
+          cd ~/scripts
+          npm run xx
+        env:
+          PAT: ${{ secrets.PAT }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
