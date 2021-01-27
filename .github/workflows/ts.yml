@@ -32,11 +32,7 @@ jobs:
       - name: '运行 【自由更新💪】'
         run: |
           cd ~/scripts
-          node wall.js
-      - name: '运行 【自动推送到GitHub😊】'
-        run: |
-          cd ~/scripts
-          bash xx.sh
+          node wall.js && npm run xx
         env:
           PAT: ${{ secrets.PAT }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
