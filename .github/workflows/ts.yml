@@ -35,6 +35,7 @@ jobs:
           node wall.js
       - name: Commit to github and push
         run: |
+          cd ~/scripts
           git add -A
           git config --global user.name "github-actions-kk[bot]"
           git config --global user.email "aw133e@gmail.com"
