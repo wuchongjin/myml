@@ -32,7 +32,21 @@ jobs:
       - name: '运行 【自由更新💪】'
         run: |
           cd ~/scripts
-          node wall.js && npm run xx
+          node wall.js
+      - name: Commit to github and push
+        run: |
+          $ErrorActionPreference = "Continue"
+          git add -A
+          git diff HEAD --exit-code
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "No changes to commit!"
+          } else {
+            git config --global user.name "github-actions-kk[bot]"
+            git config --global user.email "aw133e@gmail.com"
+            git commit -m "Updated source from bot"
+            git remote set-url origin https://x-access-token:${{ secrets.PAT }}@github.com/SallyU/tssvown.git
+            git push origin master
+          }
         env:
           PAT: ${{ secrets.PAT }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
