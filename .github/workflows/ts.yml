@@ -31,7 +31,7 @@ jobs:
       - name: '运行 【自由更新💪】'
         run: |
           cd ~/scripts
-          node jd_sx.js
+          node wall.js
       - name: '运行 【自动推送到GitHub😊】'
         run: |
           cd ~/scripts
