@@ -29,11 +29,11 @@ jobs:
         run: |
           cd ~/scripts
           npm install
-      - name: '运行 【自由更新💪】'
+      - name: '开始自由更新💪'
         run: |
           cd ~/scripts
           node wall.js
-      - name: Commit to github and push
+      - name: '执行推送到GitHub🚗'
         run: |
           cd ~/scripts
           git add -A
